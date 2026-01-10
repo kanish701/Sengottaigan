@@ -1,0 +1,400 @@
+/* --- Modern Variables --- */
+:root {
+    --primary-maroon: #690505;
+    /* Deep TVK Maroon */
+    --accent-red: #b91c1c;
+    /* Bright Red */
+    --accent-gold: #fbbf24;
+    /* Gold */
+    --dark-bg: #0f0505;
+    /* Very dark red/black background */
+    --text-white: #ffffff;
+    --text-muted: #d4d4d4;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Base Layout --- */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--dark-bg);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    /* Ensure you have a modern font imported */
+    color: var(--text-white);
+    padding-top: 120px;
+    /* Space for fixed navbar */
+}
+
+/* --- Dynamic Backgrounds --- */
+.hero-bg-gradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 80% 20%, #450a0a 0%, var(--dark-bg) 60%);
+    z-index: 1;
+}
+
+.hero-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.3;
+    z-index: 2;
+}
+
+/* "LEADER" Outline Text behind everything */
+.hero-outline-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15vw;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.03);
+    z-index: 2;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* --- Grid Layout --- */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* --- Left Column: Typography --- */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: rgba(251, 191, 36, 0.1);
+    /* Gold tint */
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-radius: 100px;
+    margin-bottom: 2rem;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-gold);
+    border-radius: 50%;
+    margin-right: 0.75rem;
+    box-shadow: 0 0 10px var(--accent-gold);
+}
+
+.status-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+}
+
+.text-highlight {
+    background: linear-gradient(to right, #fff, #999);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 500px;
+    margin-bottom: 2.5rem;
+}
+
+.tvk-text {
+    color: var(--accent-red);
+    font-weight: 600;
+}
+
+/* --- Buttons --- */
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.btn-primary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: var(--accent-red);
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #991b1b;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(185, 28, 28, 0.2);
+}
+
+.btn-secondary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    color: white;
+    font-weight: 500;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.icon-pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* --- Stats Row --- */
+.hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--glass-border);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stat-separator {
+    width: 1px;
+    height: 40px;
+    background: var(--glass-border);
+}
+
+/* --- Right Column: Visuals --- */
+.image-card-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+}
+
+.image-frame {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--glass-border);
+    aspect-ratio: 4/5;
+    /* Standard portrait ratio */
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.01);
+    /* Slight zoom to prevent border bleeding */
+}
+
+/* Gradient overlay on image bottom */
+.image-overlay-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+}
+
+/* Floating Glass Card */
+.glass-card {
+    position: absolute;
+    bottom: 40px;
+    left: -40px;
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.5rem;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 20;
+}
+
+.glass-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.glass-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.glass-title {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.glass-subtitle {
+    font-size: 1rem;
+    color: white;
+    font-weight: 700;
+}
+
+/* --- Scroll Trigger --- */
+.scroll-trigger {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-muted);
+    animation: bounce 2s infinite;
+    z-index: 20;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translate(-50%, 0);
+    }
+
+    40% {
+        transform: translate(-50%, -10px);
+    }
+
+    60% {
+        transform: translate(-50%, -5px);
+    }
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
+
+    .hero-content {
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-visual {
+        order: 1;
+        margin-bottom: 1rem;
+    }
+
+    .image-card-wrapper {
+        margin: 0 auto;
+        max-width: 350px;
+    }
+
+    .glass-card {
+        left: 50%;
+        transform: translateX(-50%) !important;
+        /* Override framer for mobile alignment if needed */
+        bottom: -20px;
+        width: 80%;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .hero-outline-text {
+        font-size: 20vw;
+        /* Make it visible but fitted on mobile */
+    }
+}

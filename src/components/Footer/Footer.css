@@ -1,0 +1,246 @@
+/* --- Variables --- */
+:root {
+    --footer-bg: #050505;     /* Almost black */
+    --footer-border: #27272a;
+    --gold: #fbbf24;
+    --maroon: #8B0000;
+    --text-white: #fafafa;
+    --text-gray: #a1a1aa;
+}
+
+.footer-section {
+    background-color: var(--footer-bg);
+    color: var(--text-white);
+    padding: 5rem 0 2rem;
+    font-family: 'Inter', sans-serif;
+    border-top: 1px solid var(--footer-border);
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* --- Footer Grid --- */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+/* Brand Column */
+.brand-col {
+    max-width: 350px;
+}
+
+.footer-logo {
+    font-family: 'Playfair Display', serif; /* Or your heading font */
+    margin-bottom: 1.5rem;
+}
+
+.logo-initials {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--text-white);
+    letter-spacing: 2px;
+}
+
+.logo-full {
+    display: block;
+    font-size: 1rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-bio {
+    color: var(--text-gray);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+}
+
+.text-gold {
+    color: var(--gold);
+}
+
+/* Social Icons */
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-white);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.social-links a:hover {
+    background: var(--gold);
+    color: black;
+    transform: translateY(-3px);
+}
+
+.social-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.disabled-link {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* --- Columns Headers & Lists --- */
+.col-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-white);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+    color: var(--text-gray);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: var(--gold);
+    transform: translateX(5px);
+}
+
+/* Contact List */
+.contact-list {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.contact-icon {
+    color: var(--gold);
+    min-width: 18px;
+    margin-top: 2px;
+}
+
+/* Form */
+.footer-text-sm {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    margin-bottom: 1rem;
+}
+
+.footer-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-input {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--footer-border);
+    padding: 10px 16px;
+    border-radius: 6px;
+    color: white;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.footer-input:focus {
+    border-color: var(--gold);
+}
+
+.footer-btn {
+    background: var(--maroon);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.footer-btn:hover {
+    background: #a50000;
+}
+
+/* --- Bottom Bar --- */
+.footer-bottom {
+    border-top: 1px solid var(--footer-border);
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copyright {
+    color: rgba(255,255,255,0.4);
+    font-size: 0.85rem;
+}
+
+.scroll-top-btn {
+    width: 40px;
+    height: 40px;
+    background: var(--footer-border);
+    color: var(--text-white);
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.scroll-top-btn:hover {
+    background: var(--gold);
+    color: black;
+}
+
+/* --- Mobile --- */
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+}

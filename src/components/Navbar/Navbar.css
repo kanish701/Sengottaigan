@@ -1,0 +1,231 @@
+/* --- Variables --- */
+:root {
+    --nav-height-scrolled: 70px;
+    --nav-height-transparent: 90px;
+    --maroon: #8B0000;
+    --maroon-dark: #660000;
+    --gold: #fbbf24;
+    --text-white: #fafafa;
+    --text-dark: #09090b;
+    --nav-bg-scrolled: rgba(255, 255, 255, 0.95);
+}
+
+/* --- Main Navbar Container --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    padding: 1.5rem 0;
+}
+
+.navbar.scrolled {
+    background-color: var(--nav-bg-scrolled);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navbar-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* --- Logo Section --- */
+.nav-logo-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.125rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Scrolled vs Transparent Colors for Logo */
+.navbar:not(.scrolled) .logo-icon {
+    background-color: white;
+    color: var(--maroon);
+}
+
+.navbar.scrolled .logo-icon {
+    background-color: var(--maroon);
+    color: white;
+}
+
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar:not(.scrolled) .logo-text {
+    color: var(--text-white);
+}
+
+.navbar.scrolled .logo-text {
+    color: var(--text-dark);
+}
+
+/* --- Desktop Navigation --- */
+.nav-links-desktop {
+    display: none;
+    /* Mobile First */
+}
+
+@media (min-width: 768px) {
+    .nav-links-desktop {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+}
+
+.nav-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+/* Link Colors */
+.navbar:not(.scrolled) .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.navbar:not(.scrolled) .nav-link:hover {
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.navbar.scrolled .nav-link {
+    color: #4b5563;
+    /* Gray-600 */
+}
+
+.navbar.scrolled .nav-link:hover {
+    color: var(--maroon);
+}
+
+/* Social Icon Button */
+.nav-social-btn {
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.navbar:not(.scrolled) .nav-social-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.navbar:not(.scrolled) .nav-social-btn:hover {
+    background: white;
+    color: black;
+}
+
+.navbar.scrolled .nav-social-btn {
+    background: #f3f4f6;
+    color: black;
+}
+
+.navbar.scrolled .nav-social-btn:hover {
+    background: black;
+    color: white;
+}
+
+/* --- Mobile Menu Toggle --- */
+.mobile-menu-btn {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+@media (min-width: 768px) {
+    .mobile-menu-btn {
+        display: none;
+    }
+}
+
+.menu-icon {
+    transition: color 0.3s ease;
+}
+
+.navbar:not(.scrolled) .menu-icon {
+    color: white;
+}
+
+.navbar.scrolled .menu-icon {
+    color: black;
+}
+
+/* --- Mobile Dropdown Animation --- */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mobile-menu-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #f3f4f6;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    animation: slideDown 0.3s ease-out forwards;
+}
+
+.mobile-nav-link {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #1f2937;
+    text-decoration: none;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #f3f4f6;
+    transition: color 0.2s;
+}
+
+.mobile-nav-link:hover {
+    color: var(--maroon);
+    border-bottom-color: var(--maroon);
+}
