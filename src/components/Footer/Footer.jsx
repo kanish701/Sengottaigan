@@ -44,7 +44,7 @@ const Footer = () => {
                         <ul className="contact-list">
                             <li><MapPin size={18} className="contact-icon" /> <span>Gobichettipalayam</span></li>
                             <li><Mail size={18} className="contact-icon" /> <span>contact@kas.com</span></li>
-                            <li><Phone size={18} className="contact-icon" /> <span>+91 4285 222 333</span></li>
+                            <li><Phone size={18} className="contact-icon" /> <span>+91 90876 12000</span></li>
                         </ul>
                     </div>
 
