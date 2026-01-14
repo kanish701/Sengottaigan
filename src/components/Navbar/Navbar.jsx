@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Twitter, Globe } from 'lucide-react';
 import { useLanguage } from '../../LanguageContext'; // Import the translation hook
 import './Navbar.css';
+import TVK from '../../assets/flag.png';
 
 const Navbar = () => {
     const { t, toggleLanguage, language } = useLanguage(); // Access translations
@@ -34,7 +35,7 @@ const Navbar = () => {
                 {/* Logo Section */}
                 <div className="nav-logo-group">
                     <div className="logo-icon">
-                        K
+                        <img src={TVK} alt="Logo" style={{ width: '40px', height: 'auto', mixBlendMode: 'multiply' }} />
                     </div>
                     <a href="#" className="logo-text">
                         K. A. Sengottaiyan
