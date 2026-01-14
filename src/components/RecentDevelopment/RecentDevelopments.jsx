@@ -1,52 +1,35 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, ArrowRight, MessageSquare, Mic, AlertCircle } from 'lucide-react';
+import { useLanguage } from '../../LanguageContext';
 import './RecentDevelopments.css';
+import Meetupimage from '../../assets/tvk-vijay-sengottiyan.avif'; // Check path
 
 const RecentDevelopments = () => {
-    
-    // Flash Feed Data
-    const newsFeed = [
-        {
-            date: "Jan 12, 2026",
-            tag: "Policy Critique",
-            title: "Sengottaiyan slams Pension Scheme as 'Political Stunt'",
-            desc: "In a press meet at Coimbatore, the Chief Coordinator termed the DMK's new assured pension scheme as a 'hollow promise' that fails to address employee concerns.",
-            icon: <Mic size={16} />
-        },
-        {
-            date: "Dec 14, 2025",
-            tag: "Delhi Visit",
-            title: "High-Profile Meeting with Amit Shah & Nirmala Sitharaman",
-            desc: "Met Union Ministers in New Delhi to discuss the political climate of Western Tamil Nadu. Sparked nationwide speculation about strategic alliances.",
-            icon: <MessageSquare size={16} />
-        },
-        {
-            date: "Nov 27, 2025",
-            tag: "Breaking",
-            title: "Appointed Chief Coordinator of TVK",
-            desc: "Moments after joining, Vijay appoints Sengottaiyan to lead the High-Level Administrative Committee, handing him control of the 'Kongu Belt' strategy.",
-            icon: <AlertCircle size={16} />
-        }
-    ];
+    const { t } = useLanguage();
+
+    // Icons helper function since we can't store components in JSON easily
+    const getIcon = (index) => {
+        if (index === 0) return <Mic size={16} />;
+        if (index === 1) return <MessageSquare size={16} />;
+        return <AlertCircle size={16} />;
+    };
 
     return (
         <section id="updates" className="section updates-section">
             <div className="container">
-                
                 <div className="updates-header">
                     <motion.div 
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         className="live-indicator"
                     >
-                        <span className="blink-dot"></span> LIVE UPDATES
+                        <span className="blink-dot"></span> {t.updates.tag}
                     </motion.div>
-                    <h2 className="section-title">Campaign <span className="text-maroon">Intel</span></h2>
+                    <h2 className="section-title">{t.updates.title} <span className="text-maroon">{t.updates.titleHighlight}</span></h2>
                 </div>
 
                 <div className="newsroom-grid">
-                    
                     {/* LEFT: MAIN HERO ARTICLE */}
                     <motion.div 
                         className="main-article-card"
@@ -56,33 +39,27 @@ const RecentDevelopments = () => {
                         viewport={{ once: true }}
                     >
                         <div className="article-image-wrap">
-                            <img src="/images/rally.png" alt="TVK Rally" className="article-image" />
+                            <img src={Meetupimage} alt="TVK Rally" className="article-image" />
                             <div className="article-overlay">
-                                <span className="article-badge">HEADLINE</span>
+                                <span className="article-badge">{t.updates.hero.badge}</span>
                             </div>
                         </div>
-                        
                         <div className="article-content">
-                            <h3 className="article-title">The "Kongu" Titan Joins Forces with Vijay</h3>
-                            <p className="article-excerpt">
-                                In a landmark shift for Tamil Nadu politics, K. A. Sengottaiyan has ended his 5-decade association with AIADMK to become the <strong>Chief Coordinator</strong> of Tamilaga Vettri Kazhagam (TVK).
-                            </p>
-                            <div className="article-quote">
-                                "No power can stop Vijay from becoming CM in 2026."
-                            </div>
+                            <h3 className="article-title">{t.updates.hero.title}</h3>
+                            <p className="article-excerpt">{t.updates.hero.excerpt}</p>
+                            <div className="article-quote">{t.updates.hero.quote}</div>
                             <div className="article-footer">
-                                <span className="read-more">Read Full Statement <ArrowRight size={16} /></span>
-                                <span className="article-date">Nov 27, 2025</span>
+                                <span className="read-more">{t.updates.hero.btn} <ArrowRight size={16} /></span>
+                                <span className="article-date">{t.updates.hero.date}</span>
                             </div>
                         </div>
                     </motion.div>
 
                     {/* RIGHT: FLASH NEWS FEED */}
                     <div className="news-feed-column">
-                        <h4 className="feed-header">Latest Briefs</h4>
-                        
+                        <h4 className="feed-header">{t.updates.feedTitle}</h4>
                         <div className="feed-list">
-                            {newsFeed.map((item, index) => (
+                            {t.updates.feed.map((item, index) => (
                                 <motion.div 
                                     key={index}
                                     className="feed-item"
@@ -93,20 +70,19 @@ const RecentDevelopments = () => {
                                 >
                                     <div className="feed-meta">
                                         <span className="feed-date"><Calendar size={12} /> {item.date}</span>
-                                        <span className={`feed-tag ${item.tag === 'Breaking' ? 'tag-red' : 'tag-gold'}`}>
+                                        <span className={`feed-tag ${index === 2 ? 'tag-red' : 'tag-gold'}`}>
                                             {item.tag}
                                         </span>
                                     </div>
                                     <h5 className="feed-title">{item.title}</h5>
                                     <p className="feed-desc">{item.desc}</p>
                                     <div className="feed-icon-corner">
-                                        {item.icon}
+                                        {getIcon(index)}
                                     </div>
                                 </motion.div>
                             ))}
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>

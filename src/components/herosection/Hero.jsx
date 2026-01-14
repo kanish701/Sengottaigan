@@ -1,19 +1,19 @@
 import React from 'react';
 import { ArrowRight, ChevronDown, Activity, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../LanguageContext'; // 1. Import the Hook
 import './Hero.css';
 import KAS from '../../assets/K.A.Sengottaiyan.jpg';
 
 const Hero = () => {
-    // Animation variants for staggered entrance
+    const { t } = useLanguage(); // 2. Get the translations
+
+    // Animation variants
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
-            transition: {
-                staggerChildren: 0.2,
-                delayChildren: 0.3,
-            },
+            transition: { staggerChildren: 0.2, delayChildren: 0.3 },
         },
     };
 
@@ -22,7 +22,7 @@ const Hero = () => {
         visible: {
             y: 0,
             opacity: 1,
-            transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }, // Apple-style ease
+            transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
         },
     };
 
@@ -33,7 +33,7 @@ const Hero = () => {
             <div className="hero-pattern"></div>
 
             {/* Large Decorative Text behind everything */}
-            <div className="hero-outline-text">LEADER</div>
+            <div className="hero-outline-text">{t.hero.outline}</div>
 
             <div className="container hero-container">
                 <motion.div
@@ -47,29 +47,26 @@ const Hero = () => {
                         {/* Live Status Badge */}
                         <motion.div variants={itemVariants} className="status-badge">
                             <span className="status-dot"></span>
-                            <span className="status-text">Chief Coordinator • TVK</span>
+                            <span className="status-text">{t.hero.status}</span>
                         </motion.div>
 
                         <motion.h1 variants={itemVariants} className="hero-title">
-                            Experience <br />
-                            <span className="text-highlight">In Action.</span>
+                            {t.hero.title1} <br />
+                            <span className="text-highlight">{t.hero.title2}</span>
                         </motion.h1>
 
                         <motion.p variants={itemVariants} className="hero-description">
-                            The official portfolio of <strong>K. A. Sengottaiyan</strong>.
-                            From a 9-time MLA to a guiding force in
-                            <span className="tvk-text"> Tamilaga Vettri Kazhagam</span>.
-                            Leading with wisdom, serving with integrity.
+                            {t.hero.desc}
                         </motion.p>
 
                         <motion.div variants={itemVariants} className="hero-actions">
                             <a href="#career" className="btn-primary">
-                                <span>Our Vision</span>
+                                <span>{t.hero.btnVision}</span>
                                 <ArrowRight size={18} />
                             </a>
                             <a href="#updates" className="btn-secondary">
                                 <Activity size={18} className="icon-pulse" />
-                                <span>Latest Updates</span>
+                                <span>{t.hero.btnUpdates}</span>
                             </a>
                         </motion.div>
 
@@ -77,12 +74,12 @@ const Hero = () => {
                         <motion.div variants={itemVariants} className="hero-stats">
                             <div className="stat-item">
                                 <span className="stat-number">50+</span>
-                                <span className="stat-label">Years Service</span>
+                                <span className="stat-label">{t.hero.stat1}</span>
                             </div>
                             <div className="stat-separator"></div>
                             <div className="stat-item">
                                 <span className="stat-number">9</span>
-                                <span className="stat-label">Times MLA</span>
+                                <span className="stat-label">{t.hero.stat2}</span>
                             </div>
                         </motion.div>
                     </div>
@@ -110,8 +107,8 @@ const Hero = () => {
                                     <Star size={20} color="#FFD700" fill="#FFD700" />
                                 </div>
                                 <div className="glass-content">
-                                    <span className="glass-title">New Mission</span>
-                                    <span className="glass-subtitle">2026 Victory Path</span>
+                                    <span className="glass-title">{t.hero.cardTitle}</span>
+                                    <span className="glass-subtitle">{t.hero.cardSubtitle}</span>
                                 </div>
                             </motion.div>
                         </div>

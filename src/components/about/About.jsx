@@ -1,16 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Brain, ShieldCheck, TrendingUp, Users, BookOpen, Crown } from 'lucide-react';
+import { Brain, ShieldCheck, TrendingUp, BookOpen, Crown } from 'lucide-react';
+import { useLanguage } from '../../LanguageContext';
 import './About.css';
+import leader from '../../assets/sengottaiyan.webp'; // Ensure path is correct
 
 const About = () => {
+    const { t } = useLanguage();
+    
     // Animation Stagger
     const container = {
         hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: { staggerChildren: 0.1 }
-        }
+        show: { opacity: 1, transition: { staggerChildren: 0.1 } }
     };
 
     const item = {
@@ -21,8 +22,6 @@ const About = () => {
     return (
         <section id="about" className="section about-section">
             <div className="container">
-                
-                {/* Section Header */}
                 <div className="about-header">
                     <motion.h2 
                         initial={{ opacity: 0, y: -20 }}
@@ -30,7 +29,7 @@ const About = () => {
                         viewport={{ once: true }}
                         className="section-title"
                     >
-                        The Strategist. <span className="text-gold">The Reformer.</span>
+                        {t.about.title} <span className="text-gold">{t.about.titleHighlight}</span>
                     </motion.h2>
                     <motion.p 
                         initial={{ opacity: 0 }}
@@ -38,11 +37,10 @@ const About = () => {
                         viewport={{ once: true }}
                         className="section-subtitle"
                     >
-                        Beyond the titles lies a legacy of administrative brilliance and unmatched political endurance in Tamil Nadu.
+                        {t.about.subtitle}
                     </motion.p>
                 </div>
 
-                {/* BENTO GRID LAYOUT */}
                 <motion.div 
                     className="bento-grid"
                     variants={container}
@@ -50,68 +48,55 @@ const About = () => {
                     whileInView="show"
                     viewport={{ once: true }}
                 >
-
-                    {/* CARD 1: MAIN BIOGRAPHY (Large) */}
+                    {/* CARD 1: BIO */}
                     <motion.div className="bento-card bio-card" variants={item}>
                         <div className="card-icon"><Crown size={24} /></div>
-                        <h3>A Colossus of Western Politics</h3>
-                        <p>
-                            K. A. Sengottaiyan is not just a politician; he is the <strong className="text-highlight">architect of the Kongu Belt's political landscape</strong>. 
-                            Starting his journey with MGR in 1972, he has remained an unconquerable force for over 50 years. 
-                            As a <strong>9-time MLA</strong>, his influence transcends party lines, making him one of the most respected senior leaders in the state.
-                        </p>
+                        <h3>{t.about.cardBio.title}</h3>
+                        <p>{t.about.cardBio.desc}</p>
                     </motion.div>
 
-                    {/* CARD 2: THE STRONGHOLD (Power) */}
+                    {/* CARD 2: POWER */}
                     <motion.div className="bento-card power-card" variants={item}>
                         <div className="card-icon"><ShieldCheck size={24} /></div>
-                        <h3>The "Gobi" Fortress</h3>
-                        <p>
-                            Gobichettipalayam is often called his personal fortress. While waves of political change swept Tamil Nadu, Sengottaiyan stood firm, winning this constituency <strong>eight times</strong> between 1980 and 2021.
-                        </p>
+                        <h3>{t.about.cardPower.title}</h3>
+                        <p>{t.about.cardPower.desc}</p>
                         <div className="stat-badge">
-                            <span>Undefeated Streak (Modern Era)</span>
+                            <span>{t.about.cardPower.badge}</span>
                         </div>
                     </motion.div>
 
-                    {/* CARD 3: EDUCATION REFORM (Knowledge) */}
+                    {/* CARD 3: KNOWLEDGE */}
                     <motion.div className="bento-card knowledge-card" variants={item}>
                         <div className="card-icon"><BookOpen size={24} /></div>
-                        <h3>Administrative Intellect</h3>
-                        <p>
-                            As <strong>Minister for School Education (2017-2021)</strong>, he modernized Tamil Nadu's curriculum for the first time in a decade.
-                        </p>
+                        <h3>{t.about.cardKnowledge.title}</h3>
+                        <p>{t.about.cardKnowledge.desc}</p>
                         <ul className="power-list">
-                            <li>Introduced Smart Classrooms & High-Tech Labs</li>
-                            <li>Launched unexpected NEET coaching initiatives</li>
-                            <li>Revamped syllabus to match CBSE standards</li>
+                            {t.about.cardKnowledge.list.map((li, index) => (
+                                <li key={index}>{li}</li>
+                            ))}
                         </ul>
                     </motion.div>
 
-                    {/* CARD 4: ELECTION STRATEGY (Skill) */}
+                    {/* CARD 4: STRATEGY */}
                     <motion.div className="bento-card strategy-card" variants={item}>
                         <div className="card-icon"><Brain size={24} /></div>
-                        <h3>Election Engineering</h3>
-                        <p>
-                            Known as a master organizer, he served as the <strong>Headquarters Secretary</strong> and <strong>Presidium Chairman</strong> for AIADMK. His ability to mobilize cadres and manage booth-level strategies is legendary.
-                        </p>
+                        <h3>{t.about.cardStrategy.title}</h3>
+                        <p>{t.about.cardStrategy.desc}</p>
                     </motion.div>
 
-                    {/* CARD 5: IMAGE / VISUAL */}
+                    {/* CARD 5: IMAGE */}
                     <motion.div className="bento-card image-card" variants={item}>
-                        <img src="/images/kas_rally.jpg" alt="Sengottaiyan with Supporters" />
+                        <img src={leader} alt="Sengottaiyan" />
                         <div className="image-overlay">
-                            <span>The People's Leader</span>
+                            <span>{t.about.cardImage}</span>
                         </div>
                     </motion.div>
 
-                    {/* CARD 6: FUTURE VISION */}
+                    {/* CARD 6: FUTURE */}
                     <motion.div className="bento-card future-card" variants={item}>
                         <div className="card-icon"><TrendingUp size={24} /></div>
-                        <h3>The New Chapter: TVK</h3>
-                        <p>
-                            Now bringing his 50 years of "Power & Knowledge" to <strong>Tamilaga Vettri Kazhagam</strong> to guide the next generation of leadership.
-                        </p>
+                        <h3>{t.about.cardFuture.title}</h3>
+                        <p>{t.about.cardFuture.desc}</p>
                     </motion.div>
 
                 </motion.div>

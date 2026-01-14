@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Twitter } from 'lucide-react';
+import { Menu, X, Twitter, Globe } from 'lucide-react';
+import { useLanguage } from '../../LanguageContext'; // Import the translation hook
 import './Navbar.css';
 
 const Navbar = () => {
+    const { t, toggleLanguage, language } = useLanguage(); // Access translations
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -15,13 +17,14 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Define links using the translation object 't'
     const navLinks = [
-        { name: 'Home', href: '#home' },
-        { name: 'Biography', href: '#about' },
-        { name: 'Political Career', href: '#career' },
-        { name: 'Updates', href: '#updates' },
-        { name: 'Media', href: '#media' },
-        { name: 'Contact', href: '#contact' },
+        { name: t.navbar.home, href: '#home' },
+        { name: t.navbar.about, href: '#about' },
+        { name: t.navbar.career, href: '#career' },
+        { name: t.navbar.updates, href: '#updates' },
+        { name: t.navbar.media, href: '#media' },
+        { name: t.navbar.contact, href: '#contact' },
     ];
 
     return (
@@ -42,13 +45,25 @@ const Navbar = () => {
                 <div className="nav-links-desktop">
                     {navLinks.map((link) => (
                         <a
-                            key={link.name}
+                            key={link.href}
                             href={link.href}
                             className="nav-link"
                         >
                             {link.name}
                         </a>
                     ))}
+
+                    {/* Language Toggle Button (Desktop) */}
+                    <button 
+                        onClick={toggleLanguage} 
+                        className="nav-social-btn lang-btn"
+                        style={{ display: 'flex', alignItems: 'center', gap: '5px', padding: '0.5rem 1rem', width: 'auto' }}
+                    >
+                        <Globe size={18} />
+                        <span style={{ fontSize: '0.8rem', fontWeight: 'bold' }}>
+                            {t.navbar.btn}
+                        </span>
+                    </button>
 
                     {/* Social Icon (Navbar) */}
                     <a
@@ -79,7 +94,7 @@ const Navbar = () => {
                 <div className="mobile-menu-dropdown">
                     {navLinks.map((link) => (
                         <a
-                            key={link.name}
+                            key={link.href}
                             href={link.href}
                             className="mobile-nav-link"
                             onClick={() => setIsMobileMenuOpen(false)}
@@ -87,6 +102,16 @@ const Navbar = () => {
                             {link.name}
                         </a>
                     ))}
+                    
+                    {/* Language Toggle (Mobile) */}
+                    <button 
+                        onClick={() => { toggleLanguage(); setIsMobileMenuOpen(false); }}
+                        className="mobile-nav-link"
+                        style={{ display: 'flex', alignItems: 'center', gap: '10px', width: '100%', background: 'none', border: 'none', cursor: 'pointer' }}
+                    >
+                        <Globe size={20} />
+                        Switch to {t.navbar.btn}
+                    </button>
                 </div>
             )}
         </nav>

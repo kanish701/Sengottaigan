@@ -1,21 +1,11 @@
 import React from 'react';
-import { Briefcase, Award, TrendingUp, Star, Flag, ArrowUpRight } from 'lucide-react';
+import { Briefcase, Flag, Star, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../LanguageContext'; // Import the hook
 import './PoliticalCareer.css';
 
 const PoliticalCareer = () => {
-    const elections = [
-        { year: 1977, const: 'Sathyamangalam', result: 'Won', margin: 'Debut Victory' },
-        { year: 1980, const: 'Gobichettipalayam', result: 'Won', margin: 'Defended' },
-        { year: 1984, const: 'Gobichettipalayam', result: 'Won', margin: 'Hat-trick' },
-        { year: 1989, const: 'Gobichettipalayam', result: 'Won', margin: 'Party Split Era' },
-        { year: 1991, const: 'Gobichettipalayam', result: 'Won', margin: 'Landslide' },
-        { year: 1996, const: 'Gobichettipalayam', result: 'Lost', margin: 'Statewide Wave' },
-        { year: 2006, const: 'Gobichettipalayam', result: 'Won', margin: 'The Return' },
-        { year: 2011, const: 'Gobichettipalayam', result: 'Won', margin: 'Dominance' },
-        { year: 2016, const: 'Gobichettipalayam', result: 'Won', margin: 'Retained' },
-        { year: 2021, const: 'Gobichettipalayam', result: 'Won', margin: 'Veteran Win' },
-    ];
+    const { t } = useLanguage(); // Get translations
 
     return (
         <section id="career" className="section career-section">
@@ -27,11 +17,13 @@ const PoliticalCareer = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-maroon-light text-maroon font-bold text-sm mb-4"
                     >
-                        <Star size={14} fill="currentColor" /> POLITICAL TIMELINE
+                        <Star size={14} fill="currentColor" /> {t.career.badge}
                     </motion.div>
-                    <h2 className="section-title">A Legacy of <span className="text-maroon">Victories</span></h2>
+                    <h2 className="section-title">
+                        {t.career.title} <span className="text-maroon">{t.career.titleHighlight}</span>
+                    </h2>
                     <p className="section-subtitle">
-                        From the MGR era to the TVK revolution. A career defined by 9 legislative victories and transformative ministerial tenures.
+                        {t.career.subtitle}
                     </p>
                 </div>
 
@@ -47,27 +39,33 @@ const PoliticalCareer = () => {
                     >
                         <div className="card-header">
                             <Flag className="card-icon" />
-                            <h3>Electoral Fortress</h3>
+                            <h3>{t.career.leftTitle}</h3>
                         </div>
-                        <p className="card-desc">The "Guardian of Gobi" holds one of the most consistent winning records in Tamil Nadu history.</p>
+                        <p className="card-desc">{t.career.leftDesc}</p>
                         
                         <div className="election-list">
-                            {elections.map((e, i) => (
-                                <div key={i} className={`election-row ${e.result === 'Lost' ? 'lost' : ''}`}>
-                                    <div className="er-year">{e.year}</div>
-                                    <div className="er-details">
-                                        <span className="er-const">{e.const}</span>
-                                        <span className="er-margin">{e.margin}</span>
+                            {/* Map through the translated elections array */}
+                            {t.career.elections.map((e, i) => {
+                                // Logic to determine if it was a loss (for styling grey vs green)
+                                const isLost = e.result === 'Lost' || e.result === 'தோல்வி';
+                                
+                                return (
+                                    <div key={i} className={`election-row ${isLost ? 'lost' : ''}`}>
+                                        <div className="er-year">{e.year}</div>
+                                        <div className="er-details">
+                                            <span className="er-const">{e.const}</span>
+                                            <span className="er-margin">{e.margin}</span>
+                                        </div>
+                                        <div className="er-result">
+                                            {isLost ? (
+                                                <span className="badge-lost">{e.result}</span>
+                                            ) : (
+                                                <span className="badge-won">{e.result}</span>
+                                            )}
+                                        </div>
                                     </div>
-                                    <div className="er-result">
-                                        {e.result === 'Won' ? (
-                                            <span className="badge-won">WON</span>
-                                        ) : (
-                                            <span className="badge-lost">LOST</span>
-                                        )}
-                                    </div>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </motion.div>
 
@@ -86,13 +84,15 @@ const PoliticalCareer = () => {
                                 <div className="tvk-logo-circle">TVK</div>
                                 <div>
                                     <span className="tvk-label">CURRENT CHAPTER</span>
-                                    <h3>Chief Coordinator</h3>
+                                    <h3>{t.career.tvkTitle}</h3>
                                 </div>
                             </div>
                             <p className="tvk-text">
-                                Joined <strong>Tamilaga Vettri Kazhagam</strong> in 2025. Spearheading the party's structure in Western Tamil Nadu (Kongu Belt) for the 2026 Assembly Elections.
+                                {t.career.tvkDesc}
                             </p>
-                            <a href="#contact" className="tvk-link">Join the Movement <ArrowUpRight size={16} /></a>
+                            <a href="#contact" className="tvk-link">
+                                {t.career.tvkBtn} <ArrowUpRight size={16} />
+                            </a>
                         </motion.div>
 
                         {/* MINISTERIAL TIMELINE */}
@@ -105,34 +105,21 @@ const PoliticalCareer = () => {
                         >
                             <div className="card-header">
                                 <Briefcase className="card-icon" />
-                                <h3>Ministerial Portfolio</h3>
+                                <h3>{t.career.portfolioTitle}</h3>
                             </div>
                             
                             <div className="timeline-wrap">
-                                <div className="timeline-item">
-                                    <div className="tl-dot"></div>
-                                    <div className="tl-content">
-                                        <span className="tl-year">2017 – 2021</span>
-                                        <h4>Minister for School Education</h4>
-                                        <p>Reformed State Board syllabus, introduced NEET coaching, and launched high-tech labs.</p>
+                                {/* Map through the translated ministerial portfolios */}
+                                {t.career.portfolios.map((item, index) => (
+                                    <div className="timeline-item" key={index}>
+                                        <div className="tl-dot"></div>
+                                        <div className="tl-content">
+                                            <span className="tl-year">{item.year}</span>
+                                            <h4>{item.role}</h4>
+                                            <p>{item.desc}</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="timeline-item">
-                                    <div className="tl-dot"></div>
-                                    <div className="tl-content">
-                                        <span className="tl-year">2011 – 2012</span>
-                                        <h4>Minister for Revenue & IT</h4>
-                                        <p>Streamlined land records and initiated early IT park developments in tier-2 cities.</p>
-                                    </div>
-                                </div>
-                                <div className="timeline-item">
-                                    <div className="tl-dot"></div>
-                                    <div className="tl-content">
-                                        <span className="tl-year">1991 – 1996</span>
-                                        <h4>Minister for Transport</h4>
-                                        <p>Modernized the government bus fleet and improved rural connectivity.</p>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                         </motion.div>
 
