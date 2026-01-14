@@ -398,3 +398,71 @@
         /* Make it visible but fitted on mobile */
     }
 }
+
+/* --- Add to the bottom of Hero.css --- */
+
+@media (max-width: 1024px) {
+    .hero-section {
+        padding-top: 100px; /* Adjust for navbar */
+        height: auto; /* Allow content to grow */
+        min-height: 100vh;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr; /* Stack vertically */
+        gap: 3rem;
+        text-align: center;
+    }
+
+    /* Reorder: Image on Top, Text on Bottom for mobile */
+    .hero-content {
+        order: 2; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-visual {
+        order: 1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .hero-title {
+        font-size: 3rem; /* Smaller font */
+    }
+    
+    .hero-outline-text {
+        font-size: 18vw; /* Make background text fit screen width */
+        top: 20%; /* Move it up so it doesn't overlap content */
+    }
+
+    .hero-stats {
+        justify-content: center;
+        width: 100%;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        margin-top: 2rem;
+    }
+
+    .hero-actions {
+        justify-content: center;
+        flex-wrap: wrap; /* Allow buttons to stack on very small phones */
+    }
+
+    .glass-card {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        bottom: -20px;
+        width: 90%; /* Prevent it going off screen */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .status-badge {
+        margin-bottom: 1rem;
+    }
+}

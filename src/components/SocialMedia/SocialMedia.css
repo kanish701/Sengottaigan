@@ -415,3 +415,53 @@
         font-size: 1.25rem;
     }
 }
+/* --- Add to the bottom of SocialMedia.css --- */
+
+@media (max-width: 1024px) {
+    /* Stack Grid Vertically */
+    .social-grid {
+        grid-template-columns: 1fr;
+        height: auto; /* Remove the fixed height needed for desktop alignment */
+        gap: 2rem;
+    }
+
+    /* Ensure Hero Card has height on mobile since grid doesn't stretch it anymore */
+    .hero-card {
+        min-height: 400px;
+    }
+    
+    /* Allow updates to stack naturally */
+    .updates-stack {
+        height: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Stack Header elements */
+    .social-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    /* Adjust fonts */
+    .section-title {
+        font-size: 2.25rem;
+    }
+
+    .hero-text {
+        font-size: 1.25rem;
+    }
+
+    /* Fix stats overlap */
+    .card-stats {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .stat-date {
+        width: 100%; /* Push date to new line if crowded */
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+}

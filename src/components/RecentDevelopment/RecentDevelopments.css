@@ -288,3 +288,29 @@
     color: var(--maroon);
     opacity: 1;
 }
+/* --- Add to the bottom of RecentDevelopments.css --- */
+
+@media (max-width: 1024px) {
+    .newsroom-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .main-article-card {
+        min-height: auto;
+    }
+    
+    .article-image-wrap {
+        height: 250px; /* Smaller image on mobile */
+    }
+}
+
+@media (max-width: 600px) {
+    .article-title {
+        font-size: 1.5rem;
+    }
+    
+    .feed-item {
+        padding: 1rem;
+    }
+}

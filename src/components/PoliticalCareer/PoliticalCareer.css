@@ -278,3 +278,43 @@
         /* Give more space to elections */
     }
 }
+/* --- Add to the bottom of PoliticalCareer.css --- */
+
+@media (max-width: 1024px) {
+    .career-grid {
+        grid-template-columns: 1fr; /* Stack columns */
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Adjust Election List Rows */
+    .election-row {
+        flex-direction: column; /* Stack details vertically */
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .er-result {
+        align-self: flex-start; /* Move badge to left */
+    }
+    
+    .er-year {
+        margin-bottom: 0.25rem;
+    }
+
+    /* Adjust Timeline */
+    .timeline-item {
+        padding-left: 1rem;
+    }
+    
+    .tl-dot {
+        width: 10px;
+        height: 10px;
+        left: -0.5rem; /* Re-center dot */
+    }
+    
+    .timeline-wrap {
+        border-left-width: 1px;
+    }
+}

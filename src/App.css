@@ -29,3 +29,23 @@ nav {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
 }
+/* --- Global Mobile Spacing Fix --- */
+@media (max-width: 800px) {
+    /* Reduce vertical padding for ALL sections */
+    section, .section, .hero-section, .about-section, .career-section, .updates-section, .media-section, .contact-section {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+        min-height: auto !important; /* Stop forcing full screen height */
+        height: auto !important;
+    }
+
+    /* Reduce gap between grid items */
+    .container, .hero-grid, .bento-grid, .career-grid, .newsroom-grid, .social-grid, .contact-grid {
+        gap: 2rem !important; /* Reduced from 4rem */
+    }
+
+    /* Reduce font size of huge titles so they don't push content down */
+    h1, .hero-title, .section-title {
+        margin-bottom: 1rem !important;
+    }
+}

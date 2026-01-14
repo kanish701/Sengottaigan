@@ -269,3 +269,29 @@
         padding: 1.5rem;
     }
 }
+/* --- Add to the bottom of Contact.css --- */
+
+@media (max-width: 1024px) {
+    .contact-grid {
+        grid-template-columns: 1fr; /* Stack columns */
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-info-card {
+        padding: 1.5rem;
+    }
+
+    .contact-form-wrapper {
+        padding: 1.5rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr; /* Stack input fields */
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+}

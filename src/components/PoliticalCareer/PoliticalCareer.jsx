@@ -12,7 +12,7 @@ const PoliticalCareer = () => {
             <div className="container">
                 {/* Header */}
                 <div className="section-header text-center mb-16">
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-maroon-light text-maroon font-bold text-sm mb-4"
@@ -28,9 +28,9 @@ const PoliticalCareer = () => {
                 </div>
 
                 <div className="career-grid">
-                    
+
                     {/* LEFT COLUMN: ELECTION HISTORY (The Fortress) */}
-                    <motion.div 
+                    <motion.div
                         className="career-card election-card"
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -42,13 +42,13 @@ const PoliticalCareer = () => {
                             <h3>{t.career.leftTitle}</h3>
                         </div>
                         <p className="card-desc">{t.career.leftDesc}</p>
-                        
+
                         <div className="election-list">
                             {/* Map through the translated elections array */}
                             {t.career.elections.map((e, i) => {
                                 // Logic to determine if it was a loss (for styling grey vs green)
                                 const isLost = e.result === 'Lost' || e.result === 'தோல்வி';
-                                
+
                                 return (
                                     <div key={i} className={`election-row ${isLost ? 'lost' : ''}`}>
                                         <div className="er-year">{e.year}</div>
@@ -71,9 +71,9 @@ const PoliticalCareer = () => {
 
                     {/* RIGHT COLUMN: PORTFOLIO & CURRENT STATUS */}
                     <div className="flex flex-col gap-8">
-                        
+
                         {/* CURRENT STATUS: TVK */}
-                        <motion.div 
+                        <motion.div
                             className="career-card tvk-card"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -96,7 +96,7 @@ const PoliticalCareer = () => {
                         </motion.div>
 
                         {/* MINISTERIAL TIMELINE */}
-                        <motion.div 
+                        <motion.div
                             className="career-card portfolio-card"
                             initial={{ opacity: 0, x: 30 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -107,7 +107,7 @@ const PoliticalCareer = () => {
                                 <Briefcase className="card-icon" />
                                 <h3>{t.career.portfolioTitle}</h3>
                             </div>
-                            
+
                             <div className="timeline-wrap">
                                 {/* Map through the translated ministerial portfolios */}
                                 {t.career.portfolios.map((item, index) => (
