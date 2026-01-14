@@ -132,9 +132,9 @@ export const translations = {
       videoTitle: "\"The Time for Change is Now\" - Coimbatore Address",
       videoMeta: "Jan 04, 2026 • 45m 20s",
       gallery: [
-        { category: 'Campaign', caption: 'Massive turnout at Erode TVK Rally' },
-        { category: 'Official', caption: 'Official Portrait 2026' },
-        { category: 'Development', caption: 'Inspecting Gobi Water Project' }
+        { category: 'Chennai', caption: '' },
+        { category: 'Airport', caption: 'Peoples Welcome' },
+        { category: 'Felicitation Ceremony', caption: 'K. A. Sengottaiyan was formally honored by former Tamil Nadu Chief Minister J. Jayalalithaa during her tenure' }
       ]
     },
     contact: {
@@ -292,9 +292,9 @@ export const translations = {
       videoTitle: "\"மாற்றத்திற்கான நேரம் இது\" - கோவை உரை",
       videoMeta: "ஜன 04, 2026 • 45நி 20நொ",
       gallery: [
-        { category: 'பரப்புரை', caption: 'ஈரோடு மாநாட்டில் மக்கள் வெள்ளம்' },
-        { category: 'அதிகாரப்பூர்வ', caption: 'அலுவல் புகைப்படம் 2026' },
-        { category: 'வளர்ச்சி', caption: 'கோபி குடிநீர் திட்ட ஆய்வு' }
+        { category: 'சென்னை', caption: 'தமிழக வெற்றிக் கழகத்தில் இணைந்தார்' },
+        { category: 'விமான நிலையம்', caption: 'மக்கள் வரவேற்கிறார்கள்' },
+        { category: 'பாராட்டு விழா', caption: 'கே.ஏ.செங்கோட்டையனை தமிழக முன்னாள் முதல்வர் ஜெ.ஜெயலலிதா பதவி வகித்த காலத்தில் முறைப்படி கௌரவித்தார்' }
       ]
     },
     contact: {
