@@ -35,7 +35,7 @@ const Navbar = () => {
                 {/* Logo Section */}
                 <div className="nav-logo-group">
                     <div className="logo-icon">
-                        <img src={TVK} alt="Logo" style={{ width: '40px', height: 'auto', mixBlendMode: 'multiply' }} />
+                        <img src={TVK} alt="Logo" style={{ width: '40px', height: 'auto' }} />
                     </div>
                     <a href="#" className="logo-text">
                         K. A. Sengottaiyan
