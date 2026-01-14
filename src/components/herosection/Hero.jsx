@@ -3,7 +3,7 @@ import { ArrowRight, ChevronDown, Activity, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../LanguageContext'; // 1. Import the Hook
 import './Hero.css';
-import KAS from '../../assets/K.A.Sengottaiyan.jpg';
+import KAS from '../../assets/KAS.jpeg';
 
 const Hero = () => {
     const { t } = useLanguage(); // 2. Get the translations
